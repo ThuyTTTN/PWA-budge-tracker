@@ -46,4 +46,14 @@
   <!-- add idb.js file connection -->
   <script src="./js/idb.js"></script>
 </body>
+<!-- tell the browser that we're using a service worker, and where to find the relevant code -->
+<script>
+  (function() {
+    if("serviceWorker" in navigator) {
+      navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log("Service Worker registered successfully."))
+      .catch(error => console.log("Service Worker registration failed."));
+    }
+  })();
+</script>
 </html>

@@ -61,7 +61,7 @@ function uploadBudget() {
     getAll.onsuccess = function () {
         //if there was data in indexedDB's store, lets send it to the api server
         if (getAll.result.length > 0 ) {
-            fetch('/api', {
+            fetch('/api/transaction', {
                 method: 'POST',
                 body: JSON.stringify(getAll.result),
                 headers: {
@@ -89,3 +89,6 @@ function uploadBudget() {
         }
     }
 };
+
+// listen for app coming back online
+window.addEventListener('online', uploadBudget);
